@@ -21,6 +21,7 @@
 - [Dagger Hilt](#dagger-hilt)
 - [Voyager](#voyager)
 - [Room](#room)
+- [Timber](#timber)
 
 ### Startup:
 ```toml
@@ -179,4 +180,17 @@ ksp(libs.androidx.room.compiler)
 
 <hr>
 
-### 
+### Timber:
+```toml
+timber = "5.0.1"
+```
+```toml
+timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" } 
+```
+```kotlin
+implementation(libs.timber)
+```
+
+<hr>
+
+###
