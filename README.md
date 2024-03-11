@@ -19,6 +19,7 @@
 - [Material Icons](#material-icons)
 - [KSP](#ksp)
 - [Dagger Hilt](#dagger-hilt)
+- [Voyager](#voyager)
 
 ### Startup:
 ```toml
@@ -142,3 +143,22 @@ implementation(libs.androidx.hilt.navigation.compose)
 implementation(libs.hilt.android)
 ksp(libs.hilt.compiler)
 ```
+
+<hr>
+
+### Voyager:
+```toml
+voyager = "1.0.0"
+```
+```toml
+voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
+voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager" }   
+```
+```kotlin
+implementation(libs.voyager.navigator)
+implementation(libs.voyager.transitions)
+```
+
+<hr>
+
+###
