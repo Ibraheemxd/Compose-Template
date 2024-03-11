@@ -116,11 +116,13 @@ alias(libs.plugins.hilt)
 ### Dagger Hilt:
 ```toml
 hilt = "2.51"
+androidxHiltNavigationCompose = "1.2.0"    
 ```
 [libraries]
 ```toml
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidxHiltNavigationCompose" }
 ```
 [plugins]
 ```toml
@@ -136,6 +138,7 @@ alias(libs.plugins.hilt)
 ```
 dependencies
 ```kotlin
+implementation(libs.androidx.hilt.navigation.compose)
 implementation(libs.hilt.android)
 ksp(libs.hilt.compiler)
 ```
