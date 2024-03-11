@@ -3,10 +3,10 @@
 | Component | Versions |
 |---|---|
 | Android Studio | Jellyfish 2023.3.1 |
-| Kotlin | 1.9.0 |
+| Kotlin | 1.9.22 |
 | AGP | 8.4.0-alpha13 |
 | JVM | 1.8 |
-| Compose | 1.5.1 |
+| Compose | 1.5.10 |
 
 ## Table of Contents
 - [Folder Structure](#folder-structure)
@@ -15,11 +15,16 @@
 ## **Folder Structure**
 
 ## **Dependencies**
-Startup:
+- [Startup](#startup)
+- [Material Icons](#material-icons)
+- [KSP](#ksp)
+- [Dagger Hilt](#dagger-hilt)
+
+### Startup:
 ```toml
 [versions]
 agp = "8.4.0-alpha13"
-kotlin = "1.9.0"
+kotlin = "1.9.22"
 lifecycleRuntimeKtx = "2.7.0"
 activityCompose = "1.8.2"
 composeBom = "2024.02.02"
@@ -70,4 +75,67 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 }
 ```
-*💡 Apk size with proguard -> **1.4MB** Where androidx.compose taking **1.1MB***
+*💡 Apk size with proguard -> **641KB**, download size -> **569.7KB***
+
+<hr>
+
+### Material Icons:
+
+```toml
+composeMaterial = "1.7.0-alpha04"
+```
+```toml
+androidx-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref="composeMaterial" }
+```
+```kotlin
+implementation(libs.androidx.material.icons.extended)
+```
+*💡 Due to the very large size of this library, make sure to use R8/Proguard to strip unused icons if you are including this library as a direct dependency.*
+
+<hr>
+
+### KSP:
+```toml
+ksp = "1.9.22-1.0.18"
+```
+[plugins]
+```toml
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+```
+Project level (plugins):
+```kotlin
+alias(libs.plugins.hilt) apply false
+```
+Module level (plugins):
+```kotlin
+alias(libs.plugins.hilt)
+```
+
+<hr>
+
+### Dagger Hilt:
+```toml
+hilt = "2.51"
+```
+[libraries]
+```toml
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+```
+[plugins]
+```toml
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+```
+Project level (plugins):
+```kotlin
+alias(libs.plugins.hilt) apply false
+```
+Module level (plugins):
+```kotlin
+alias(libs.plugins.hilt)
+```
+dependencies
+```kotlin
+implementation(libs.hilt.android)
+ksp(libs.hilt.compiler)
+```
