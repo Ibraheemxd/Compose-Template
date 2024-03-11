@@ -16,7 +16,7 @@ sealed interface DataState<out T> {
      */
     data class Loading(
         val index: Int = 0,
-        val count: Int = 0,
+        val count: Int = MAX_COUNT_UNKNOWN,
     ) : DataState<Nothing> {
 
         /**
@@ -26,6 +26,10 @@ sealed interface DataState<out T> {
          */
         fun getPercentage(): Int {
             return (index / count) * 100
+        }
+
+        companion object {
+            const val MAX_COUNT_UNKNOWN = -1
         }
     }
 
