@@ -20,6 +20,7 @@
 - [KSP](#ksp)
 - [Dagger Hilt](#dagger-hilt)
 - [Voyager](#voyager)
+- [Room](#room)
 
 ### Startup:
 ```toml
@@ -161,4 +162,21 @@ implementation(libs.voyager.transitions)
 
 <hr>
 
-###
+### Room:
+```toml
+room = "2.6.1"
+```
+```toml
+androidx-room = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }  
+```
+```kotlin
+implementation(libs.androidx.room)
+implementation(libs.androidx.room.ktx)
+ksp(libs.androidx.room.compiler)
+```
+
+<hr>
+
+### 
