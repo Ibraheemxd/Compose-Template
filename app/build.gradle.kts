@@ -53,6 +53,9 @@ android {
 dependencies {
 
     implementation(libs.timber)
+    implementation(libs.coil)
+
+    // Androidx
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
 

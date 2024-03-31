@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Foundation"
+rootProject.name = "Compose-Template"
 include(":app")
